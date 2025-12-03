@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>MiniChat</title>
+    <title>🦜 TalkaTuka</title>
 
     <!-- Firebase (compat SDKs) -->
     <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
@@ -54,20 +54,21 @@
 
         /* header */
         header.app-header {
-            height: 56px;
+            height: auto;
             background: linear-gradient(90deg, #0F1419 0%, #1A1E27 100%);
             color: white;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            padding: 0 18px;
-            justify-content: space-between;
+            padding: 16px 18px;
+            justify-content: center;
             border-bottom: 1px solid rgba(0, 212, 255, 0.1);
             backdrop-filter: blur(10px);
         }
 
         header h1 {
-            font-size: 20px;
-            margin: 0;
+            font-size: 24px;
+            margin: 0 0 4px 0;
             font-weight: 800;
             letter-spacing: -0.5px;
             background: linear-gradient(90deg, #00D4FF, #8B5CF6);
@@ -77,20 +78,26 @@
         }
 
         .text-btn {
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            color: var(--accent-cyan);
-            padding: 6px 12px;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #00D4FF 0%, #8B5CF6 100%);
+            border: 0;
+            color: #FFFFFF;
+            padding: 10px 16px;
+            border-radius: 10px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 12px;
+            font-weight: 700;
+            font-size: 11px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .text-btn:hover {
-            background: rgba(0, 212, 255, 0.15);
-            border-color: rgba(0, 212, 255, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .text-btn:active {
             transform: translateY(-1px);
         }
 
@@ -283,6 +290,7 @@
             height: 64px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 12px 18px;
             border-bottom: 1px solid rgba(0, 212, 255, 0.1);
             background: rgba(15, 20, 25, 0.8);
@@ -407,6 +415,11 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 18px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M16.6915026,12.4744748 L3.50612381,13.2599618 C3.19218622,13.2599618 3.03521743,13.4170592 3.03521743,13.5741566 L1.15159189,20.0151496 C0.8376543,20.8006365 0.99,21.89 1.77946707,22.52 C2.41,22.99 3.50612381,23.1 4.13399899,22.8429026 L21.714504,14.0454487 C22.6563168,13.5741566 23.1272231,12.6315722 22.9702544,11.6889879 L4.13399899,1.16398446 C3.34915502,0.9 2.40734225,0.9 1.77946707,1.42603414 C0.994623095,2.05474348 0.837654326,3.01739898 1.15159189,3.80288585 L3.03521743,10.4137953 C3.03521743,10.5709374 3.19218622,10.7280635 3.50612381,10.7280635 L16.6915026,11.5135503 C16.6915026,11.5135503 17.1624089,11.5135503 17.1624089,12.0394845 C17.1624089,12.5654186 16.6915026,12.4744748 16.6915026,12.4744748 Z"/></svg>');
+            background-size: 60%;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: transparent;
         }
 
         .fab:hover {
@@ -425,32 +438,32 @@
             display: flex;
             align-items: center;
             justify-content: space-around;
-            order: -1;
+            order: 1;
             backdrop-filter: blur(10px);
         }
 
         .bottom-nav button {
-            background: linear-gradient(135deg, #00D4FF 0%, #8B5CF6 100%);
-            border: 0;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
             cursor: pointer;
             padding: 10px 16px;
             border-radius: 10px;
             font-weight: 700;
-            color: #FFFFFF;
+            color: var(--accent-cyan);
             font-size: 11px;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.25);
             text-transform: uppercase;
         }
 
         .bottom-nav button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
+            background: rgba(0, 212, 255, 0.15);
+            border-color: rgba(0, 212, 255, 0.4);
+            transform: translateY(-1px);
         }
 
         .bottom-nav button:active {
-            transform: translateY(-1px);
+            transform: translateY(0);
         }
 
         @media (max-width:700px) {
@@ -624,15 +637,341 @@
             border-color: rgba(0, 212, 255, 0.4);
             transform: translateX(-2px);
         }
+
+        /* splash screen */
+        .splash-screen {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #0F1419 0%, #1A1E27 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .splash-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .splash-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .splash-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .splash-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .splash-text {
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            background: linear-gradient(90deg, #00D4FF, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Call UI */
+        .call-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--success);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .call-button:hover {
+            background: rgba(16, 185, 129, 0.3);
+            border-color: rgba(16, 185, 129, 0.5);
+            transform: scale(1.05);
+        }
+
+        .call-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Incoming call modal */
+        .incoming-call-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .incoming-call-modal.show {
+            display: flex;
+        }
+
+        .incoming-call-content {
+            background: linear-gradient(135deg, #1A1E27 0%, #242933 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .incoming-call-content h3 {
+            font-size: 20px;
+            margin: 0 0 8px 0;
+        }
+
+        .incoming-call-content p {
+            color: var(--text-secondary);
+            margin: 0 0 24px 0;
+        }
+
+        .call-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .call-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .call-btn-accept {
+            background: var(--success);
+            color: white;
+        }
+
+        .call-btn-accept:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+        }
+
+        .call-btn-reject {
+            background: #ef4444;
+            color: white;
+        }
+
+        .call-btn-reject:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+        }
+
+        /* In-call overlay */
+        .in-call-overlay {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2500;
+        }
+
+        .in-call-overlay.show {
+            display: flex;
+        }
+
+        .in-call-video-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: #000;
+        }
+
+        .in-call-bg {
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="%23222" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="%23111"/><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            background-size: 100px 100px;
+            background-repeat: repeat;
+            background-color: #0a0e12;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .in-call-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(1px);
+        }
+
+        .in-call-profile {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+            padding: 3px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .in-call-profile img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .in-call-user-info {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .in-call-user-info h2 {
+            font-size: 24px;
+            margin: 0 0 8px 0;
+            font-weight: 700;
+        }
+
+        .in-call-user-info p {
+            font-size: 14px;
+            color: #aaa;
+            margin: 0;
+        }
+
+        .in-call-video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .in-call-controls {
+            position: absolute;
+            bottom: 40px;
+            display: flex;
+            gap: 20px;
+            z-index: 2501;
+        }
+
+        .in-call-control-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(26, 30, 39, 0.85);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            color: white;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .in-call-control-btn:hover {
+            background: rgba(26, 30, 39, 1);
+            border-color: rgba(0, 212, 255, 0.6);
+            transform: scale(1.1);
+        }
+
+        .in-call-end-btn {
+            background: #ef4444;
+            border-color: #dc2626;
+        }
+
+        .in-call-end-btn:hover {
+            background: #dc2626;
+            transform: scale(1.1);
+        }
+
+        .in-call-end-btn:hover {
+            background: #dc2626;
+        }
+
+        .in-call-info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 14px;
+            background: rgba(26, 30, 39, 0.9);
+            padding: 12px 16px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 
 <body>
     <div class="app" id="appRoot">
+        <!-- Splash Screen -->
+        <div class="splash-screen" id="splashScreen">
+            <div class="splash-content">
+                <div class="splash-image">
+                    <img src="https://img.freepik.com/free-vector/cute-parrot-bird-branch-cartoon-vector-icon-illustration-animal-nature-icon-isolated-flat-vector_138676-14867.jpg?w=740&q=80"
+                        alt="MiniChat">
+                </div>
+                <div class="splash-text">🦜 Warming up the wings…</div>
+            </div>
+        </div>
+
         <header class="app-header">
-            <h1 id="appTitle">MiniChat</h1>
-            <div>
-                <button class="text-btn" id="hdrSettingsBtn">Settings</button>
+            <div
+                style="display: flex; align-items: flex-start; justify-content: center; width: 100%; flex-direction: column; gap: 4px;">
+                <h1 id="appTitle">🦜 TalkaTuka</h1>
+                <div style="font-size: 12px; color: var(--text-secondary); text-align: center; width: 100%;">Chats</div>
             </div>
         </header>
 
@@ -641,10 +980,6 @@
             <button onclick="openAddFriendModal()">ADD FRIEND</button>
             <button id="bottomSettingsBtn" onclick="openSettingsModal()">SETTINGS</button>
             <button onclick="openMore()">MORE</button>
-        </div>
-
-        <div class="tabbar centered">
-            <div class="tab">Chats</div>
         </div>
 
         <div class="main">
@@ -657,7 +992,7 @@
 
             <div class="chat-panel" id="chatPanel">
                 <div class="chat-header">
-                    <div style="display:flex;align-items:center;gap:12px">
+                    <div style="display:flex;align-items:center;gap:12px;flex:1">
                         <div class="back-btn" id="backBtn" onclick="backToChats()" style="display:none">←</div>
                         <div class="avatar"><img id="chatAvatar"
                                 src="https://img.freepik.com/free-vector/cute-parrot-bird-branch-cartoon-vector-icon-illustration-animal-nature-icon-isolated-flat-vector_138676-14867.jpg?w=740&q=80"
@@ -667,12 +1002,14 @@
                             <div class="status" id="chatStatus" style="font-size:13px;color:#666">Offline</div>
                         </div>
                     </div>
+                    <button class="call-button" id="callBtn" onclick="initiateCall()" title="Start call">📞</button>
                 </div>
 
                 <div class="chat-body" id="chatBody"></div>
 
                 <div class="chat-input">
-                    <input id="messageInput" placeholder="Message" oninput="typing(true)" />
+                    <input id="messageInput" placeholder="Message" oninput="typing(true)"
+                        onkeypress="if(event.key==='Enter') sendMessage()" />
                     <button class="fab" onclick="sendMessage()">Send</button>
                 </div>
             </div>
@@ -684,7 +1021,7 @@
         <div id="authCard"
             style="width:92%;max-width:360px;background:var(--card);padding:20px;border-radius:12px;box-shadow:0 20px 40px rgba(0,0,0,0.12)">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-                <strong style="font-size:18px">MiniChat</strong>
+                <strong style="font-size:18px">🦜 TalkaTuka</strong>
             </div>
 
             <div style="display:flex;gap:8px;margin-bottom:8px">
@@ -758,6 +1095,40 @@
     <!-- Toast holder -->
     <div class="toast-holder" id="toastHolder"></div>
 
+    <!-- Incoming call modal -->
+    <div class="incoming-call-modal" id="incomingCallModal">
+        <div class="incoming-call-content">
+            <h3>Incoming Call</h3>
+            <p id="incomingCallerName">Someone is calling...</p>
+            <div class="call-actions">
+                <button class="call-btn call-btn-accept" onclick="acceptCall()">✓</button>
+                <button class="call-btn call-btn-reject" onclick="rejectCall()">✕</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- In-call overlay -->
+    <div class="in-call-overlay" id="inCallOverlay">
+        <div class="in-call-video-container">
+            <div class="in-call-bg">
+                <div class="in-call-profile">
+                    <img id="callUserAvatar"
+                        src="https://img.freepik.com/free-vector/cute-parrot-bird-branch-cartoon-vector-icon-illustration-animal-nature-icon-isolated-flat-vector_138676-14867.jpg?w=740&q=80"
+                        alt="User">
+                </div>
+                <div class="in-call-user-info">
+                    <h2 id="callUserName">User</h2>
+                    <p id="callStatus">Connecting...</p>
+                </div>
+            </div>
+            <video id="localVideo" autoplay muted playsinline style="display:none;"></video>
+            <div class="in-call-controls">
+                <button class="in-call-control-btn" id="muteBtn" onclick="toggleMute()" title="Mute/Unmute">🔊</button>
+                <button class="in-call-control-btn in-call-end-btn" onclick="endCall()" title="End call">☎</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         /* -------------------- Firebase init -------------------- */
         const firebaseConfig = {
@@ -778,11 +1149,319 @@
         let activeChatId = null;
         let activeFriendUid = null;
         let typingTimer = null;
+        let friendNames = {}; // cache friend names for notifications
+
+        // Call state
+        let localStream = null;
+        let peerConnection = null;
+        let inCall = false;
+        let callInProgress = false;
+        let incomingCallData = null;
+        let callStartTime = null;
+        let callDurationInterval = null;
+        let currentCallId = null;
+        let processedCallIds = new Set(); // Track which calls we've already shown
 
         /* -------------------- Helpers -------------------- */
         function $(id) { return document.getElementById(id); }
         function show(el) { if (!el) return; el.classList.remove('hidden'); el.style.display = ''; }
         function hide(el) { if (!el) return; el.classList.add('hidden'); el.style.display = 'none'; }
+
+        /* Request notification permission */
+        function requestNotificationPermission() {
+            if ('Notification' in window && Notification.permission === 'default') {
+                Notification.requestPermission();
+            }
+        }
+
+        /* Send notification */
+        function sendNotification(title, options = {}) {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification(title, {
+                    icon: 'https://img.freepik.com/free-vector/cute-parrot-bird-branch-cartoon-vector-icon-illustration-animal-nature-icon-isolated-flat-vector_138676-14867.jpg?w=740&q=80',
+                    badge: 'https://img.freepik.com/free-vector/cute-parrot-bird-branch-cartoon-vector-icon-illustration-animal-nature-icon-isolated-flat-vector_138676-14867.jpg?w=740&q=80',
+                    ...options
+                });
+            }
+        }
+
+        /* -------------------- WebRTC Calling -------------------- */
+        const ICE_SERVERS = { iceServers: [{ urls: ['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302'] }] };
+
+        async function initiateCall() {
+            if (!activeFriendUid) return showToast('Select a chat first', 'info');
+            if (callInProgress) return showToast('Call already in progress', 'info');
+
+            try {
+                callInProgress = true;
+                const callId = [currentUser.uid, activeFriendUid].sort().join('_') + '_' + Date.now();
+
+                // Request media
+                localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+
+                // Send call offer
+                const offer = await createOffer(callId);
+                db.ref('calls/' + callId).set({
+                    caller: currentUser.uid,
+                    callee: activeFriendUid,
+                    offer: JSON.stringify(offer),
+                    status: 'ringing',
+                    timestamp: Date.now()
+                });
+
+                // Show calling screen immediately
+                $('inCallOverlay').classList.add('show');
+                $('callUserName').textContent = friendNames[activeFriendUid] || 'User';
+                $('callStatus').textContent = 'Calling...';
+
+                // Listen for answer
+                let answered = false;
+                db.ref('calls/' + callId + '/answer').on('value', async (snap) => {
+                    if (!answered && snap.val()) {
+                        answered = true;
+                        try {
+                            const answer = JSON.parse(snap.val());
+                            await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+                            startCall(callId);
+                            showToast('Call connected', 'success', 1200);
+                        } catch (e) {
+                            console.error('Error setting remote description:', e);
+                        }
+                    }
+                });
+
+                // Listen for ICE candidates from remote
+                db.ref('calls/' + callId + '/iceCandidates/' + activeFriendUid).on('child_added', (snap) => {
+                    if (peerConnection && snap.val()) {
+                        try {
+                            const candidate = JSON.parse(snap.val());
+                            peerConnection.addIceCandidate(new RTCIceCandidate(candidate)).catch(e => console.error('ICE error:', e));
+                        } catch (e) {
+                            console.error('Error parsing ICE candidate:', e);
+                        }
+                    }
+                });
+
+                // Listen for when other user ends the call
+                db.ref('calls/' + callId + '/ended').on('value', (snap) => {
+                    if (snap.val() && callInProgress) {
+                        endCall();
+                        showToast('Call ended by other user', 'info');
+                    }
+                });
+
+                // Timeout after 30 seconds
+                setTimeout(() => {
+                    if (!answered && callInProgress) {
+                        endCall();
+                        showToast('Call not answered', 'info');
+                    }
+                }, 30000);
+
+            } catch (err) {
+                callInProgress = false;
+                $('inCallOverlay').classList.remove('show');
+                showToast('Failed to start call: ' + err.message, 'info');
+            }
+        }
+
+        async function createOffer(callId) {
+            peerConnection = new RTCPeerConnection(ICE_SERVERS);
+
+            if (localStream) {
+                localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+            }
+
+            peerConnection.onicecandidate = (event) => {
+                if (event.candidate) {
+                    db.ref('calls/' + callId + '/iceCandidates/' + currentUser.uid).push(JSON.stringify(event.candidate));
+                }
+            };
+
+            peerConnection.ontrack = (event) => {
+                console.log('Received remote track:', event.track.kind);
+            };
+
+            const offer = await peerConnection.createOffer();
+            await peerConnection.setLocalDescription(offer);
+            return offer;
+        }
+
+        async function acceptCall() {
+            if (!incomingCallData) return;
+            try {
+                $('incomingCallModal').classList.remove('show');
+                callInProgress = true;
+
+                // Ensure chat panel is completely hidden
+                const chatPanel = $('chatPanel');
+                const chatsPanel = $('chatsPanel');
+                if (chatPanel) chatPanel.classList.remove('active');
+                if (chatsPanel) chatsPanel.style.display = 'none';
+
+                localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+
+                const offer = JSON.parse(incomingCallData.offer);
+                peerConnection = new RTCPeerConnection(ICE_SERVERS);
+
+                localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
+                peerConnection.onicecandidate = (event) => {
+                    if (event.candidate) {
+                        db.ref('calls/' + incomingCallData.callId + '/iceCandidates/' + currentUser.uid).push(JSON.stringify(event.candidate));
+                    }
+                };
+
+                peerConnection.ontrack = (event) => {
+                    console.log('Received remote track:', event.track.kind);
+                };
+
+                // Set caller info on call screen first
+                const callerName = friendNames[incomingCallData.caller] || 'User';
+                $('callUserName').textContent = callerName;
+                activeFriendUid = incomingCallData.caller;
+
+                // Show call screen full screen
+                $('inCallOverlay').classList.add('show');
+                $('callStatus').textContent = 'Connecting...';
+
+                await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+                const answer = await peerConnection.createAnswer();
+                await peerConnection.setLocalDescription(answer);
+
+                db.ref('calls/' + incomingCallData.callId + '/answer').set(JSON.stringify(answer));
+
+                // Listen for ICE candidates from remote
+                db.ref('calls/' + incomingCallData.callId + '/iceCandidates/' + incomingCallData.caller).on('child_added', (snap) => {
+                    if (peerConnection && snap.val()) {
+                        try {
+                            const candidate = JSON.parse(snap.val());
+                            peerConnection.addIceCandidate(new RTCIceCandidate(candidate)).catch(e => console.error('ICE error:', e));
+                        } catch (e) {
+                            console.error('Error parsing ICE candidate:', e);
+                        }
+                    }
+                });
+
+                // Start call with duration tracking
+                startCall(incomingCallData.callId);
+                showToast('Call accepted', 'success', 1200);
+            } catch (err) {
+                callInProgress = false;
+                $('inCallOverlay').classList.remove('show');
+                showToast('Failed to accept call: ' + err.message, 'info');
+            }
+        }
+
+        function rejectCall() {
+            if (incomingCallData) {
+                db.ref('calls/' + incomingCallData.callId + '/status').set('rejected');
+                processedCallIds.delete(incomingCallData.callId); // Remove from processed so it can show again if recalled
+                incomingCallData = null;
+            }
+            $('incomingCallModal').classList.remove('show');
+        }
+
+        function formatCallDuration(seconds) {
+            const hrs = Math.floor(seconds / 3600);
+            const mins = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            if (hrs > 0) return `${hrs}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            return `${mins}:${String(secs).padStart(2, '0')}`;
+        }
+
+        function updateCallDuration() {
+            if (!callStartTime) return;
+            const elapsed = Math.floor((Date.now() - callStartTime) / 1000);
+            $('callStatus').textContent = formatCallDuration(elapsed);
+        }
+
+        function startCall(callId) {
+            inCall = true;
+            callStartTime = Date.now();
+            currentCallId = callId;
+            $('inCallOverlay').classList.add('show');
+            $('callStatus').textContent = '0:00';
+
+            // Update call duration every second
+            if (callDurationInterval) clearInterval(callDurationInterval);
+            callDurationInterval = setInterval(updateCallDuration, 1000);
+
+            // Update call screen with user info
+            if (activeFriendUid) {
+                const friendName = friendNames[activeFriendUid] || 'User';
+                $('callUserName').textContent = friendName;
+                $('callUserAvatar').src = 'https://img.freepik.com/free-vector/cute-parrot-bird-branch-cartoon-vector-icon-illustration-animal-nature-icon-isolated-flat-vector_138676-14867.jpg?w=740&q=80';
+            }
+
+            const video = $('localVideo');
+            if (localStream && video) {
+                video.srcObject = localStream;
+                video.style.display = 'block';
+            }
+        }
+
+        function toggleMute() {
+            if (!localStream) return;
+            const muteBtn = $('muteBtn');
+            const audioTracks = localStream.getAudioTracks();
+            audioTracks.forEach(track => track.enabled = !track.enabled);
+            muteBtn.textContent = audioTracks[0]?.enabled ? '🔊' : '🔇';
+        }
+
+        function endCall() {
+            inCall = false;
+            callInProgress = false;
+
+            // Clear duration interval
+            if (callDurationInterval) {
+                clearInterval(callDurationInterval);
+                callDurationInterval = null;
+            }
+
+            // Notify other user that call ended
+            if (currentCallId) {
+                db.ref('calls/' + currentCallId + '/ended').set(true);
+            }
+
+            if (localStream) {
+                localStream.getTracks().forEach(track => track.stop());
+                localStream = null;
+            }
+
+            if (peerConnection) {
+                peerConnection.close();
+                peerConnection = null;
+            }
+
+            $('inCallOverlay').classList.remove('show');
+            $('localVideo').style.display = 'none';
+            $('muteBtn').textContent = '🔊';
+            callStartTime = null;
+            currentCallId = null;
+            showToast('Call ended', 'info');
+        }
+
+        // Listen for incoming calls
+        function listenForIncomingCalls() {
+            if (!currentUser) return;
+            db.ref('calls').orderByChild('callee').equalTo(currentUser.uid).on('child_added', (snap) => {
+                const callData = snap.val();
+                const callId = snap.key;
+
+                // Only show calls that are ringing, not already processed, and not more than 2 minutes old
+                if (callData.status === 'ringing' && !inCall && !callInProgress &&
+                    !processedCallIds.has(callId) && (Date.now() - callData.timestamp) < 120000) {
+
+                    processedCallIds.add(callId);
+                    incomingCallData = { callId: callId, ...callData };
+                    const callerName = friendNames[callData.caller] || 'User';
+                    $('incomingCallerName').textContent = callerName + ' is calling...';
+                    $('incomingCallModal').classList.add('show');
+                    sendNotification(callerName + ' is calling', { body: 'Tap to answer' });
+                }
+            });
+        }
 
         /* Toast */
         function showToast(msg, type = 'info', ms = 2200) {
@@ -867,18 +1546,29 @@
                 currentUser = user;
                 db.ref('users/' + currentUser.uid).update({ online: true });
                 hide($('authModal'));
+                hide($('moreModal'));
+                hide($('addFriendModal'));
+                hide($('settingsModal'));
                 initAfterAuth();
             } else {
                 hide($('addFriendModal'));
                 hide($('settingsModal'));
+                hide($('moreModal'));
                 show($('authModal'));
             }
         });
 
         /* After auth */
         function initAfterAuth() {
+            requestNotificationPermission();
+            listenForIncomingCalls();
             openChats();
             loadChatsList();
+            // Hide splash screen after app initializes
+            setTimeout(() => {
+                const splash = $('splashScreen');
+                splash.classList.add('hidden');
+            }, 1500);
             showToast('Welcome back', 'success', 1200);
         }
 
@@ -915,6 +1605,7 @@
                     results.forEach(res => {
                         const friendUid = res.uid;
                         const user = res.data || { name: 'Unknown', avatar: '' };
+                        friendNames[friendUid] = user.name || 'User'; // cache friend name
                         const chatId = [currentUser.uid, friendUid].sort().join('_');
 
                         // get last message & unread count
@@ -1025,6 +1716,13 @@
                 appendMessage(msg, key);
                 if (msg.sender !== currentUser.uid && !msg.seen) {
                     db.ref('messages/' + activeChatId + '/' + key + '/seen').set(true);
+                    // Send notification for incoming message
+                    const friendName = friendNames[msg.sender] || 'Someone';
+                    sendNotification(friendName + ' sent a message', {
+                        body: msg.text.substring(0, 100),
+                        tag: 'message-' + msg.sender,
+                        requireInteraction: false
+                    });
                 }
             });
 
